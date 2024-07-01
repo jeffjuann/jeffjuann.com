@@ -13,10 +13,10 @@ export default defineConfig({
     mdx(), 
     icon()
   ],
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'tap'
-  },
+  // prefetch: {
+  //   prefetchAll: true,
+  //   defaultStrategy: 'viewport',
+  // },
   output: "server",
   adapter: vercelServerless()
 });
