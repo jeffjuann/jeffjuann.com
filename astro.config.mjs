@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
 import vercelServerless from '@astrojs/vercel/serverless';
+import vercelStatic from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,6 +18,6 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'tap'
   },
-  output: "server",
-  adapter: vercelServerless()
+  output: "static",
+  adapter: vercelStatic()
 });
