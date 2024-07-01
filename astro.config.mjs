@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'tap'
+    defaultStrategy: 'load',
   },
   output: "static",
   adapter: vercelStatic()
