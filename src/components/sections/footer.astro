@@ -11,7 +11,7 @@ const [{ data }] = await getCollection('core');
       data.contacts.map((social) =>
       {
         return (
-          <li class="w-fit h-fit"><a href={social.value}><Icon name={social.type} class="size-5 text-muted-foreground hover:text-foreground"/></a></li>
+          <li class="w-fit h-fit"><a href={social.value} aria-label={social.type}><Icon name={social.type} class="size-6 text-muted-foreground hover:text-foreground"/></a></li>
         )
       })
     }
