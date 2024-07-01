@@ -1,0 +1,33 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import dayjs from 'dayjs';
+
+interface Props {
+	slug: string;
+	type: "projects" | "articles";
+	data: InferEntrySchema<"projects"> | InferEntrySchema<"articles">;
+}
+
+const { slug, type, data } = Astro.props;
+const { title, description, date, link, linktype } = data;
+
+const href = link === undefined || linktype === 'internal' ? `/${type}/${slug}` : link;
+---
+
+<li>
+	<a href={href} target={linktype === 'external' ? '_blank' : ''}>
+		<div class="px-4 py-2 hover:bg-accent/40 transition-all flex flex-col">
+			<h3 class="leading-7 [&:not(:first-child)]:mt-6 font-[550] text-sm">{title}</h3>
+			<span class="text-sm text-muted-foreground leading-6 font-medium">{description}</span>
+			{
+				type === 'articles'	
+				? <span class="text-xs text-muted-foreground font-medium flex flex-row gap-1 items-center">
+						<Icon name="calendar" class="size-3"/>
+						<span class="mt-0.5">{dayjs(date).format('DD/MM/YYYY')}</span>
+					</span>
+				: null
+			}
+		</div>
+	</a>
+</li>

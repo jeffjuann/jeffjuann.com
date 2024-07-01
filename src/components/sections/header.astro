@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import { cn } from '@/utils/tailwind';
+
+const pathnames = Astro.url.pathname.split('/').filter(Boolean);
+
+const [{ data }] = await getCollection('core');
+---
+<header class="px-4 space-y-0">
+  <span class="flex flex-row gap-1 items-center transition-all">
+    <h1 class="leading-7 [&:not(:first-child)]:mt-6 font-semibold whitespace-nowrap"><a href="/">{ data.name }</a></h1>
+    {
+      pathnames.length > 0
+      ? pathnames.map((pathname, idx) =>
+        {
+          const href = `/${pathnames.slice(0, idx + 1).join('/')}`;
+          return (
+            <span class="flex flex-row gap-1 items-center">
+              <Icon name="chevron-right" class="w-4 h-4 text-muted-foreground"/>
+              <span class={cn("font-[550] text-muted-foreground hover:text-foreground", idx === 0 ? 'capitalize' : '')}><a class="w-fit max-w-full text-ellipsis line-clamp-1" href={href}>{ pathname }</a></span>
+            </span>
+          )
+        })
+      : null
+    }
+  </span>
+  {
+    pathnames.length === 0
+    ? <span class="text-sm text-muted-foreground font-medium">{ data.description }</span>
+    : null
+  }
+</header>

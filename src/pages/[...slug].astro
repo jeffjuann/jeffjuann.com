@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import RootLayout from '@/layouts/root-layout.astro';
+import { Icon } from 'astro-icon/components';
+import dayjs from 'dayjs';
+import H1 from '@/components/mdx/typography/h1.astro';
+import H2 from '@/components/mdx/typography/h2.astro';
+import H3 from '@/components/mdx/typography/h3.astro';
+import H4 from '@/components/mdx/typography/h4.astro';
+import H5 from '@/components/mdx/typography/h5.astro';
+import H6 from '@/components/mdx/typography/h6.astro';
+import P from '@/components/mdx/typography/p.astro';
+import UL from '@/components/mdx/list/ul.astro';
+import OL from '@/components/mdx/list/ol.astro';
+import LI from '@/components/mdx/list/li.astro';
+import A from '@/components/mdx/a.astro';
+import Blockquote from '@/components/mdx/blockquote/blockquote.astro';
+import Bold from '@/components/mdx/text-style/strong.astro';
+import Italic from '@/components/mdx/text-style/em.astro';
+import Del from '@/components/mdx/text-style/del.astro';
+import Img from '@/components/mdx/img.astro';
+import Pre from '@/components/mdx/code/pre.astro';
+import Code from '@/components/mdx/code/code.astro';
+import Table from '@/components/mdx/table/table.astro';
+import Thead from '@/components/mdx/table/thead.astro';
+import Th from '@/components/mdx/table/th.astro';
+import Tbody from '@/components/mdx/table/tbody.astro';
+import Td from '@/components/mdx/table/td.astro';
+import Hr from '@/components/mdx/hr.astro';
+import Section from '@/components/mdx/footnotes/section.astro';
+import Sup from '@/components/mdx/footnotes/sup.astro';
+import Input from '@/components/mdx/input.astro';
+
+export async function getStaticPaths()
+{
+  const projectsEntries = (await getCollection('projects')).map(entry => ({ params: { slug: `projects/${entry.slug}` }, props: { type: 'projects', entry } }));
+  const articlesEntries = (await getCollection('articles')).map(entry => ({ params: { slug: `articles/${entry.slug}` }, props: { type: 'articles', entry } }));
+
+  return [
+    ...projectsEntries,
+    ...articlesEntries
+  ];
+}
+
+const { type, entry } = Astro.props;
+
+if(entry.data.linktype === 'external' || entry.data.link !== undefined) return Astro.redirect(entry.data.link);
+
+const { title, description, date } = entry.data;
+const { Content } = await entry.render();
+
+const components = {
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
+  p: P,
+  ul: UL,
+  ol: OL,
+  li: LI,
+  a: A,
+  blockquote: Blockquote,
+  strong: Bold,
+  em: Italic,
+  del: Del,
+  img: Img,
+  pre: Pre,
+  code: Code,
+  table: Table,
+  thead: Thead,
+  th: Th,
+  tbody: Tbody,
+  td: Td,
+  hr: Hr,
+  sup: Sup,
+  section: Section,
+  input: Input,
+}
+---
+
+<RootLayout>
+  <div class="px-4 transition-all flex flex-col">
+    <H1>{ title }</H1>
+    <span class="text-sm text-muted-foreground leading-6 font-medium">{description}</span>
+    {
+      type === 'articles'	
+      ? <span class="text-xs text-muted-foreground font-medium flex flex-row gap-1 items-center">
+          <Icon name="calendar" class="size-3"/>
+          <span class="mt-0.5">{dayjs(date).format('DD/MM/YYYY')}</span>
+        </span>
+      : null
+    }
+  </div>
+  <article class="px-4 flex flex-col text-sm *:rounded-md gap-0.5">
+    <Content components={components}/>
+  </article>
+</RootLayout>

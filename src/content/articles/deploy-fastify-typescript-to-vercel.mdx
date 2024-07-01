@@ -1,0 +1,160 @@
+---
+title: Deploy Fastify (Typescript) to Vercel
+description: Learn how to deploy a Fastify TypeScript project to Vercel, a popular platform for front-end frameworks and static sites.
+date: 2024-06-28
+linktype: internal
+---
+
+Fastify is a highly efficient web framework for Node.js that is ideal for building fast and low-overhead web applications. When combined with TypeScript, you get the benefits of a robust type system, which can enhance your development experience and reduce bugs. Deploying this setup to Vercel, a popular platform for front-end frameworks and static sites, can ensure that your project is easily accessible and scalable. This guide will walk you through the steps to build and deploy a Fastify TypeScript project to Vercel.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your local machine:
+
+- Node.js (v14 or later)
+- npm or yarn
+- Vercel CLI
+
+## Step 1: Setting Up Your Fastify TypeScript Project
+
+First, let's set up a new Fastify project with TypeScript.
+
+1. **Create a new directory for your project**:
+    ```bash
+    mkdir fastify-typescript-vercel
+    cd fastify-typescript-vercel
+    ```
+
+2. **Initialize a new Node.js project**:
+    ```bash
+    npm init -y
+    ```
+
+3. **Install Fastify and TypeScript**:
+    ```bash
+    npm install fastify
+    npm install typescript ts-node @types/node --save-dev
+    ```
+
+4. **Set up your TypeScript configuration**:
+    Create a `tsconfig.json` file in the root of your project with the following content:
+    ```json
+    {
+      "compilerOptions": {
+        "target": "ES2020",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist"
+      },
+      "include": ["src/**/*"]
+    }
+    ```
+
+5. **Create the project structure**:
+    ```bash
+    mkdir src
+    ```
+
+6. **Create your Fastify server**:
+    Inside the `src` directory, create a file named `server.ts` with the following content:
+    ```typescript
+    import Fastify from 'fastify';
+
+    const fastify = Fastify({ logger: true });
+
+    fastify.get('/', async (request, reply) => {
+      return { hello: 'world' };
+    });
+
+    const start = async () => {
+      try {
+        await fastify.listen({ port: 3000 });
+        console.log('Server running at http://localhost:3000');
+      } catch (err) {
+        fastify.log.error(err);
+        process.exit(1);
+      }
+    };
+
+    start();
+    ```
+
+7. **Add scripts to your `package.json`**:
+    ```json
+    "scripts": {
+      "dev": "ts-node src/server.ts",
+      "build": "tsc",
+      "start": "node dist/server.js"
+    }
+    ```
+
+## Step 2: Preparing for Deployment
+
+To deploy your Fastify TypeScript project to Vercel, you need to ensure your project is ready for a production environment.
+
+1. **Create a `vercel.json` configuration file** in the root of your project:
+    ```json
+    {
+      "version": 2,
+      "builds": [
+        {
+          "src": "src/server.ts",
+          "use": "@vercel/node"
+        }
+      ],
+      "routes": [
+        {
+          "src": "/(.*)",
+          "dest": "/src/server.ts"
+        }
+      ]
+    }
+    ```
+
+2. **Install the Vercel Node Builder**:
+    ```bash
+    npm install @vercel/node
+    ```
+
+3. **Ensure your `start` script is configured**:
+    The `start` script should already be configured in your `package.json` to run the compiled JavaScript file. If not, make sure it is:
+    ```json
+    "scripts": {
+      "start": "node dist/server.js"
+    }
+    ```
+
+## Step 3: Deploying to Vercel
+
+1. **Log in to Vercel**:
+    If you haven't already, log in to your Vercel account using the Vercel CLI:
+    ```bash
+    vercel login
+    ```
+
+2. **Deploy your project**:
+    Deploy your project to Vercel using the following command:
+    ```bash
+    vercel
+    ```
+
+    Follow the prompts to set up and deploy your project. Vercel will automatically detect the configuration from your `vercel.json` file and deploy your Fastify TypeScript project.
+
+3. **Set environment variables (if needed)**:
+    If your project requires environment variables, you can set them up in the Vercel dashboard or via the Vercel CLI:
+    ```bash
+    vercel env add VARIABLE_NAME
+    ```
+
+## Step 4: Testing Your Deployment
+
+After deploying, Vercel will provide you with a unique URL for your project. Open this URL in your browser to test your Fastify server. You should see a JSON response with `{ hello: 'world' }`.
+
+Congratulations! You have successfully deployed your Fastify TypeScript project to Vercel. You can now take advantage of Vercel's features like serverless functions, automatic scaling, and more to enhance your application.
+
+## Conclusion
+
+Deploying a Fastify TypeScript project to Vercel is a straightforward process thanks to Vercel's powerful platform and easy-to-use CLI. By following the steps outlined in this guide, you can quickly get your project up and running in a production environment. Happy coding!

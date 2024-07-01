@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import LinkCard from '@/components/link-card.astro';
+
+const projects = await getCollection('projects');
+---
+
+{
+  projects.length > 0
+  ? <section>
+      <h2 class="px-4 leading-7 [&:not(:first-child)]:mt-6 font-semibold">Projects</h2>
+      <ul class="flex flex-col gap-0.5">
+        {
+          projects.map((project) =>
+          {
+            return (
+              <LinkCard type='projects' slug={project.slug} data={project.data}/>
+            )
+          })
+        }
+      </ul>
+    </section>
+  : null
+}

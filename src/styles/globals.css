@@ -8,32 +8,42 @@
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 234 36% 43%;
     --primary-foreground: 0 0% 98%;
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted-foreground: 0 0% 41%;
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
+    --code: 210 12% 16%;
+    --code-foreground: 0 0% 98%;
+    --table-head: 210 10% 20%;
+    --table-head-foreground: 214 13% 80%;
+    --table-row: 210 12% 16%;
+    --table-row-foreground: 214 13% 90%;
     --radius: 0.3rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
   }
 }
 
 @layer base {
-  * {
+  body {
+    scrollbar-gutter: stable both-edge;
+    
     font-family: 'Inter Variable', sans;
     font-style: normal;
   }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground));
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;  
+  }
+  
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  code {
+    font-family: 'Source Code Pro Variable', monospace;
+  }  
 }

@@ -1,0 +1,6 @@
+---
+import { cn } from '@/utils/tailwind';
+
+const { class: defaultClass, ...props } = Astro.props;
+---
+<section {...props} class={cn(defaultClass, "mt-6 [&_h2]:font-semibold")}><slot /></section>

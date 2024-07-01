@@ -1,0 +1,6 @@
+---
+import { cn } from '@/utils/tailwind';
+
+const { class: defaultClass, ...props } = Astro.props;
+---
+<sup {...props} class={cn(defaultClass, "ml-0.5 *:not-italic")}><slot /></sup>
