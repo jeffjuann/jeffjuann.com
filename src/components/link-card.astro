@@ -18,11 +18,11 @@ const href = link === undefined || linktype === 'internal' ? `/${type}/${slug}` 
 <li>
 	<a href={href} target={linktype === 'external' ? '_blank' : ''}>
 		<div class="px-4 py-2 hover:bg-accent/40 transition-all flex flex-col">
-			<h3 class="leading-7 [&:not(:first-child)]:mt-6 font-[550] text-sm">{title}</h3>
+			<h3 class="leading-7 [&:not(:first-child)]:mt-6 font-medium text-base">{title}</h3>
 			<span class="text-sm text-muted-foreground leading-6 font-medium">{description}</span>
 			{
 				type === 'articles'	
-				? <span class="text-xs text-muted-foreground font-medium flex flex-row gap-1 items-center">
+				? <span class="text-sm text-muted-foreground font-[450] flex flex-row gap-1 items-center">
 						<Icon name="calendar" class="size-3"/>
 						<span class="mt-0.5">{dayjs(date).format('DD/MM/YYYY')}</span>
 					</span>

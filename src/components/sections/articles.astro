@@ -9,7 +9,7 @@ const articles = (await getCollection('articles')).sort((a, b) => dayjs(b.data.d
 {
   articles.length > 0
   ? <section>
-      <h2 class="px-4 leading-7 [&:not(:first-child)]:mt-6 font-semibold">Articles</h2>
+      <h2 class="px-4 leading-7 [&:not(:first-child)]:mt-6 font-semibold text-base">Articles</h2>
       <ul class="flex flex-col gap-0.5">
         {
           articles.map((project) =>

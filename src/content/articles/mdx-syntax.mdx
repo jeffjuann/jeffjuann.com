@@ -1,14 +1,27 @@
 ---
-title: Mdx Syntax
-description: A guide to Markdown syntax for creating content in MDX.
+title: MDX Syntax
+description: A comprehensive guide to Markdown syntax for creating content in MDX.
 date: 2024-07-01
 linktype: internal
 ---
 
-# Markdown Syntax Guide
+Creating content in MDX (Markdown with JSX) is a great way to manage your documentation, blogs, or any textual content in a readable and efficient manner. Here’s a guide to help you understand how to use different Markdown components and their purposes.
 
 ## Headers
 
+Headers help to structure your document into sections. The number of `#` symbols at the start of the line indicates the level of the header.
+
+### Example
+```markdown
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+```
+
+### Rendered
 # H1
 ## H2
 ### H3
@@ -18,19 +31,36 @@ linktype: internal
 
 ## Emphasis
 
-*Italic*  
-_Italic_  
+Use asterisks (*) or underscores (_) to emphasize text. Single symbols create italic text, while double symbols create bold text.
 
-**Bold**  
-__Bold__  
+### Example
+```markdown
+*Italic* or _Italic_  
+**Bold** or __Bold__  
+***Bold and Italic*** or ___Bold and Italic___  
+```
 
-***Bold and Italic***  
-___Bold and Italic___  
+### Rendered
+*Italic* or _Italic_  
+**Bold** or __Bold__  
+***Bold and Italic*** or ___Bold and Italic___  
 
 ## Lists
 
 ### Unordered List
 
+Use hyphens (-), plus signs (+), or asterisks (*) to create unordered lists. Indent nested items.
+
+### Example
+```markdown
+- Item 1
+  - Subitem 1
+  - Subitem 2
+- Item 2
+- Item 3
+```
+
+### Rendered
 - Item 1
   - Subitem 1
   - Subitem 2
@@ -39,29 +69,82 @@ ___Bold and Italic___
 
 ### Ordered List
 
+Use numbers followed by periods to create ordered lists.
+
+### Example
+```markdown
+1. First item
+2. Second item
+3. Third item
+```
+
+### Rendered
 1. First item
 2. Second item
 3. Third item
 
 ## Links
 
+Links can be created using inline or reference styles. Inline links are created with square brackets followed by parentheses containing the URL. Reference links use square brackets and a reference identifier.
+
+### Example
+```markdown
 [Inline link](https://www.example.com)  
 
-[Reference link][1]  
+[Reference link][1]
+
+[1]: https://www.example.com "Optional Title Here"
+```
+
+### Rendered
+[Inline link](https://www.example.com)  
+[Reference link][1]
 
 [1]: https://www.example.com "Optional Title Here"
 
 ## Images
 
+Images are similar to links but include an exclamation mark at the start.
+
+### Example
+```markdown
+![Alt text](https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+```
+
+### Rendered
 ![Alt text](https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 ## Blockquotes
 
+Blockquotes are useful for highlighting important quotes or text.
+
+### Example
+```markdown
+> This is a blockquote.  
+> This is the second line of the blockquote.
+```
+
+### Rendered
 > This is a blockquote.  
 > This is the second line of the blockquote.
 
 ## Code
 
+Inline code is created using backticks (`), while code blocks are created using triple backticks.
+
+### Example
+````markdown
+Inline `code`
+
+```javascript
+// Code block
+function greet() {
+  console.log("Hello, world!");
+}
+```
+````
+
+### Rendered
 Inline `code`
 
 ```javascript
@@ -73,6 +156,17 @@ function greet() {
 
 ## Tables
 
+Tables are created using pipes (|) and hyphens (-). Align text using colons (:) for left, right, or center alignment.
+
+### Example
+```markdown
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1    | Data 1   | Data 2   |
+| Row 2    | Data 3   | Data 4   |
+```
+
+### Rendered
 | Header 1 | Header 2 | Header 3 |
 |----------|----------|----------|
 | Row 1    | Data 1   | Data 2   |
@@ -80,42 +174,96 @@ function greet() {
 
 ## Horizontal Rule
 
+Horizontal rules are created with three or more hyphens, asterisks, or underscores.
+
+### Example
+```markdown
+---
+```
+
+### Rendered
 ---
 
 ## Task List
 
+Task lists are created using square brackets with a space for incomplete tasks and an `x` for completed tasks.
+
+### Example
+```markdown
+- [x] Completed task
+- [ ] Incomplete task
+```
+
+### Rendered
 - [x] Completed task
 - [ ] Incomplete task
 
 ## HTML
 
+HTML can be embedded directly into Markdown for more complex formatting needs.
+
+### Example
+```html
+<p>This is a paragraph in HTML.</p>
+```
+
+### Rendered
 <p>This is a paragraph in HTML.</p>
 
-# GFM
+# GFM (GitHub Flavored Markdown)
 
 ## Autolink literals
 
+GFM automatically creates links for URLs and email addresses.
+
+### Example
+```markdown
+www.example.com, https://example.com, and contact@example.com.
+```
+
+### Rendered
 www.example.com, https://example.com, and contact@example.com.
 
 ## Footnote
 
+Footnotes provide additional information without cluttering the main text.
+
+### Example
+```markdown
+A note[^1]
+
+[^1]: Big note.
+```
+
+### Rendered
 A note[^1]
 
 [^1]: Big note.
 
 ## Strikethrough
 
+Strikethrough text using tildes (~).
+
+### Example
+```markdown
 ~one~ or ~~two~~ tildes.
+```
 
-## Table
-
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
-| 1 | 11 | 11 | 111 |
-| 2 | 22 | 22 | 222 |
-| 3 | 33 | 33 | 333 |
+### Rendered
+~one~ or ~~two~~ tildes.
 
 ## Tasklist
 
+Tasklists help keep track of to-dos.
+
+### Example
+```markdown
 * [ ] to do
 * [x] done
+```
+
+### Rendered
+* [ ] to do
+* [x] done
+
+By understanding and using these Markdown components, you can create well-structured and easy-to-read content in MDX, enhancing both readability and functionality in your projects.

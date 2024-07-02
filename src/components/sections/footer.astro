@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const [{ data }] = await getCollection('core');
 ---
 
-<footer class="px-4 flex flex-col sm:flex-row justify-between items-end">
+<footer class="px-4 flex flex-col sm:flex-row justify-between items-end gap-2">
   <ul class="flex flex-row gap-2 transition-all">
     {
       data.contacts.map((social) =>

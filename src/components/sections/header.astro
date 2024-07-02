@@ -18,7 +18,7 @@ const [{ data }] = await getCollection('core');
           return (
             <span class="flex flex-row gap-1 items-center">
               <Icon name="chevron-right" class="w-4 h-4 text-muted-foreground"/>
-              <span class={cn("font-[550] text-muted-foreground hover:text-foreground", idx === 0 ? 'capitalize' : '')}><a class="w-fit max-w-full text-ellipsis line-clamp-1" href={href}>{ pathname }</a></span>
+              <span class={cn("font-525 text-muted-foreground hover:text-foreground", idx === 0 ? 'capitalize' : '')}><a class="w-fit max-w-full text-ellipsis line-clamp-1" href={href}>{ pathname }</a></span>
             </span>
           )
         })
@@ -27,7 +27,7 @@ const [{ data }] = await getCollection('core');
   </span>
   {
     pathnames.length === 0
-    ? <span class="text-sm text-muted-foreground font-medium">{ data.description }</span>
+    ? <p class="text-sm text-muted-foreground font-medium leading-4">{ data.description }</p>
     : null
   }
 </header>

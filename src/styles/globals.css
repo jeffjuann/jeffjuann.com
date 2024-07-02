@@ -23,12 +23,15 @@
     --radius: 0.3rem;
   }
 }
+@font-face {
+  font-family: 'Inter';
+  src: url(public/fonts/Inter-VariableFont_slnt,wght.ttf) format('truetype');
+}
 
 @layer base {
   body {
     scrollbar-gutter: stable both-edge;
-    
-    font-family: 'Inter Variable', sans;
+
     font-style: normal;
   }
 
