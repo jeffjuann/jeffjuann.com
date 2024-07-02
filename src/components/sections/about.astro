@@ -4,5 +4,5 @@ const [{ body }] = await getCollection('core');
 ---
 <section class="px-4 space-y-4">
   <h2 class="leading-7 [&:not(:first-child)]:mt-6 font-semibold text-base">Today</h2>
-  <p class="text-base text-muted-foreground font-[450]" set:html={body}/>
+  <p class="text-base text-muted-foreground font-medium" set:html={body}/>
 </section>

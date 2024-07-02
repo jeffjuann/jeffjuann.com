@@ -23,10 +23,6 @@
     --radius: 0.3rem;
   }
 }
-@font-face {
-  font-family: 'Inter';
-  src: url(public/fonts/Inter-VariableFont_slnt,wght.ttf) format('truetype');
-}
 
 @layer base {
   body {

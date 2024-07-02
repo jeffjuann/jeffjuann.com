@@ -8,7 +8,7 @@ export default {
 				'525': 525,
 			},
 			fontFamily: {
-				sans: ['Inter', ...defaultTheme.fontFamily.sans],
+				sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
 				code: ['Source Code Pro Variable', 'monospace'],
 			},
 			colors: {
