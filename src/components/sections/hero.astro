@@ -1,4 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import HeroImage from '@/assets/hero.png';
+---
+
 <section class="px-4 flex flex-col items-end gap-0.5 select-none">
-  <img src={'/assets/hero.png'} alt="Hero" class="w-full rounded-md"/>
+  <Image src={HeroImage} alt="Hero" class="w-full rounded-md"/>
   <span class="text-xs text-muted-foreground font-medium">Photo By <a href="https://instagram.com/by.sseulgi/" class="italic underline">@by.sseulgi</a></span>
 </section>
