@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import icon from "astro-icon";
-import vercelServerless from '@astrojs/vercel/serverless';
 import vercelStatic from '@astrojs/vercel/static';
 
 // https://astro.build/config
