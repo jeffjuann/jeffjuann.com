@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import LinkCard from '@/components/link-card.astro';
+import dayjs from 'dayjs';
 
-const articles = await getCollection('articles');
+const articles = (await getCollection('articles')).sort((a, b) => dayjs(b.data.date).diff(dayjs(a.data.date)) );
 ---
 
 {
