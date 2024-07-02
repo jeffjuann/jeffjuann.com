@@ -1,8 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import LinkCard from '@/components/link-card.astro';
+import { getArticles } from '@/lib/articles';
 
 const articles = await getCollection('articles');
+const ctfulArticle = await getArticles();
+console.log(ctfulArticle.items);
 ---
 
 {

@@ -1,0 +1,34 @@
+---
+import { contentfulClient } from "../../lib/contentful";
+// import { micromark } from 'micromark';
+import type { Articles } from "../../lib/articles";
+
+export async function getStaticPaths() {
+  const entries = await contentfulClient.getEntries<Articles>({
+    content_type: "articles",
+  });
+
+  const pages = entries.items.map((item) => ({
+    params: { slug: item.fields.slug },
+    props: {
+      title: item.fields.title,
+      content: item.fields.content,
+      date: new Date(item.fields.date).toLocaleDateString(),
+    },
+  }));
+  return pages;
+}
+
+
+const { content, title, date } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <time>{date}</time>
+    <article set:html={content} />
+  </body>
+</html>
