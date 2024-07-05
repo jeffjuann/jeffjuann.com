@@ -80,7 +80,7 @@ const components = {
 }
 ---
 
-<RootLayout title={title} isArticle article={{ date: dayjs(date).format('YYYY-MM-DD') }}>
+<RootLayout title={title} description={description} isArticle={entry.collection === 'articles'} article={entry.collection === 'articles' ? { date: dayjs(date).format('YYYY-MM-DD') } : undefined}>
   <div class="px-4 transition-all flex flex-col">
     <H1>{ title }</H1>
     <span class="text-sm text-muted-foreground leading-6 font-medium">{description}</span>
