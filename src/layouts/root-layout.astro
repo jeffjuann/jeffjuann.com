@@ -29,7 +29,7 @@ const { title, description, isArticle, article } = Astro.props;
       description={
 				description 
 				?	description
-				: "Jeff Juann • Innovative software engineer and frontend developer. Proficient in turning creative concepts into digital solutions."
+				: "Jeff Juan • Innovative software engineer and frontend developer. Proficient in turning creative concepts into digital solutions."
 			}
 
       openGraph={{
@@ -39,6 +39,12 @@ const { title, description, isArticle, article } = Astro.props;
           image: "https://jeffjuann.com/public/jeffjuann.png",
 					url: "https://www.jeffjuann.com/",
         },
+				image: {
+					url: "https://jeffjuann.com/public/jeffjuann.png",
+					width: 1200,
+					height: 630,
+					alt: "Jeff Juan"
+				},
 				article: isArticle && article !== undefined
 					? {
 						publishedTime: article.date,
@@ -50,7 +56,7 @@ const { title, description, isArticle, article } = Astro.props;
 				card: "summary_large_image",
 				site: "@jeffjuann",
 				title: title ? `${title} - Jeff Juan` : 'Jeff Juan • Software Engineer & Front-end Developer',
-				description: description ? description : "Jeff Juann • Innovative software engineer and front-end developer. Proficient in turning creative concepts into digital solutions.",
+				description: description ? description : "Jeff Juan • Innovative software engineer and front-end developer. Proficient in turning creative concepts into digital solutions.",
 				image: "https://jeffjuann.com/public/jeffjuann.png",
 				imageAlt: "Jeff Juan",
         creator: "@jeffjuann"
