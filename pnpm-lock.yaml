@@ -23,9 +23,6 @@ dependencies:
   '@fontsource-variable/source-code-pro':
     specifier: ^5.0.19
     version: 5.0.19
-  '@fontsource/inter':
-    specifier: ^5.0.18
-    version: 5.0.18
   astro:
     specifier: ^4.11.3
     version: 4.11.3(typescript@5.5.2)
@@ -742,10 +739,6 @@ packages:
 
   /@fontsource-variable/source-code-pro@5.0.19:
     resolution: {integrity: sha512-mmeEykZsLRuFsklfamKVwahnWNpdAzpvGcOPPiFUydSnrd/9aEXy/HzOSYCOOTCP667L4nio9rB7wO3KVO5J/w==}
-    dev: false
-
-  /@fontsource/inter@5.0.18:
-    resolution: {integrity: sha512-YCsoYPTcs713sI7tLtxaPrIhXAXvEetGg5Ry02ivA8qUOb3fQHojbK/X9HLD5OOKvFUNR2Ynkwb1kR1hVKQHpw==}
     dev: false
 
   /@iconify/tools@3.0.7:

@@ -10,6 +10,12 @@ const core = defineCollection({
       type: z.enum(['email', 'twitter', 'linkedin', 'github']),
       value: z.string(),
     })),
+    recentFavorite: z.object({
+      url: z.string(),
+      cover: z.string().optional(),
+      title: z.string(),
+      artist: z.string(),
+    }).optional(),
   }),
 });
 

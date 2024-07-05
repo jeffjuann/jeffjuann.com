@@ -1,4 +1,5 @@
 ---
-const props = Astro.props;
+import { cn } from "@/utils/tailwind"
+const { class: className, ...props } = Astro.props;
 ---
-<h1 {...props} class="leading-7 [&:not(:first-child)]:mt-6 font-medium text-lg"><slot /></h1>
+<h1 {...props} class={cn("leading-7 [&:not(:first-child)]:mt-6 font-semibold text-2xl text-foreground", className)}><slot /></h1>

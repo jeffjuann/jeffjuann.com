@@ -17,7 +17,7 @@ const href = link === undefined || linktype === 'internal' ? `/${type}/${slug}` 
 
 <li>
 	<a href={href} target={linktype === 'external' ? '_blank' : ''}>
-		<div class="px-4 py-2 hover:bg-accent/40 transition-all flex flex-col">
+		<div class="px-4 py-2 hover:bg-accent/40 transition-all flex flex-col rounded-md">
 			<h3 class="leading-7 [&:not(:first-child)]:mt-6 font-medium text-base">{title}</h3>
 			<span class="text-sm text-muted-foreground leading-6 font-medium">{description}</span>
 			{

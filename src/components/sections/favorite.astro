@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
+
+const [{ data: { recentFavorite } }] = await getCollection('core');
+---
+{
+  recentFavorite 
+  ? <section class="flex flex-col space-y-3">
+      <h2 class="px-4 leading-7 [&:not(:first-child)]:mt-6 font-semibold text-base">Recent Favorite</h2>
+      <a href={recentFavorite.url} target="_blank">
+        <div class="mx-4 p-3 flex flex-row gap-2 bg-accent/50 rounded-md items-center w-full max-w-96">
+          {
+            <span class="size-12 bg-foreground rounded-md grid place-items-center">
+              { 
+                recentFavorite.cover 
+                ? <img src={recentFavorite.cover} alt="Cover" class="w-full h-full object-cover" /> 
+                : <Icon name="cross" class="size-10 text-background/70"/>
+              }
+            </span>
+          }
+          <div class="space-y-1 h-fit">
+            <h3 class="leading-4 text-base font-semibold text-foreground">{recentFavorite.title}</h3>
+            <p class="text-sm text-muted-foreground font-medium">{recentFavorite.artist}</p>
+          </div>
+        </div>
+      </a>
+    </section>
+  : null
+}
