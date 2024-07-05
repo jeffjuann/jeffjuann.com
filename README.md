@@ -35,3 +35,7 @@ This project use [pnpm](https://pnpm.io) for development. make sure you installe
 | `src/contents`           | The content for the web.                        |
 | `src/styles/globals.css` | The global styling system for the web.          |
 | `src/components/mdx`     | The custom components for rendering Mdx file.   |
+
+## 🔎 Future Enhancements
+
+Future updates will integrate [Contentful](https://www.contentful.com/), a headless CMS, to facilitate real-time content management. This enhancement will enable dynamic updates without manual repository changes, streamlining content creation and management.
