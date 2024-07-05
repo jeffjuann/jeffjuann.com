@@ -6,23 +6,69 @@ import '@fontsource-variable/source-code-pro'; // Supports weights 200-900
 import HeaderSection from '@/components/sections/header.astro';
 import FooterSection from '@/components/sections/footer.astro';
 
+import { SEO } from "astro-seo";
+
 interface Props {
 	title?: string;
+	description?: string;
+	isArticle?: boolean;
+	article?: {
+		date: string;
+	}
 }
 
-const { title } = Astro.props;
+const { title, description, isArticle, article } = Astro.props;
 
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{ title ? `${title} - Jeff Juan` : 'Jeff Juan'}</title>
-		<meta name="description" content="Astro description" />
+		<SEO
+      title={ title ? `${title} - Jeff Juan` : 'Jeff Juan • Software Engineer & Frontend Developer'}
+      description={
+				description 
+				?	description
+				: "Jeff Juann • Innovative software engineer and frontend developer. Proficient in turning creative concepts into digital solutions."
+			}
+
+      openGraph={{
+        basic: {
+          title: title ? `${title} - Jeff Juan` : 'Jeff Juan • Software Engineer & Front-end Developer',
+          type: "website",
+          image: "https://jeffjuann.com/public/jeffjuann.png",
+					url: "https://www.jeffjuann.com/",
+        },
+				article: isArticle && article !== undefined
+					? {
+						publishedTime: article.date,
+						authors: ["Jeff Juan"]
+					}
+					: undefined
+      }}
+      twitter={{
+				card: "summary_large_image",
+				site: "@jeffjuann",
+				title: title ? `${title} - Jeff Juan` : 'Jeff Juan • Software Engineer & Front-end Developer',
+				description: description ? description : "Jeff Juann • Innovative software engineer and front-end developer. Proficient in turning creative concepts into digital solutions.",
+				image: "https://jeffjuann.com/public/jeffjuann.png",
+				imageAlt: "Jeff Juan",
+        creator: "@jeffjuann"
+      }}
+
+			extend={{
+				meta: [
+					{
+						name: "theme-color",
+						content: "#ECEADF"
+					},
+					{
+						name: "viewport",
+						content: "width=device-width"
+					}
+				]
+			}}
+    />
 	</head>
 	<body class="bg-background flex items-start justify-center selection:bg-primary selection:text-primary-foreground">
 		<main class="w-full max-w-[860px] min-h-dvh px-2 py-16 flex flex-col justify-between">
